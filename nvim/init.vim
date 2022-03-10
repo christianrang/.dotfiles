@@ -4,7 +4,7 @@ set ts=2 sts=2 sw=2
 set cursorline
 set hlsearch
 set colorcolumn=80,120
-set spell spelllang=en_us
+"set spell spelllang=en_us
 
 let mapleader="\<SPACE>"
 
@@ -39,7 +39,8 @@ nnoremap <leader>gf <cmd>GoTestFunc<cr>
 nnoremap <leader>nt <cmd>NERDTreeToggle<cr>
 
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+"autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 
 " UltiSnips: Trigger configuration
 let g:UltiSnipsExpandTrigger="<Tab>"
@@ -49,6 +50,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let NERDTreeShowHidden=1
 
 " Tokyo Night colorscheme config
-"let g:tokyonight_style = "night"
-"colorscheme tokyonight
+" let g:tokyonight_style = "night"
+" colorscheme tokyonight
 "
