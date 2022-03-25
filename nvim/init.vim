@@ -4,7 +4,11 @@ set ts=2 sts=2 sw=2
 set cursorline
 set hlsearch
 set colorcolumn=80,120
-"set spell spelllang=en_us
+set spell spelllang=en_us
+
+noremap <leader>sc :set spell!<CR>
+noremap <leader>ml :make lint<CR>
+noremap <leader>jq :%!jq<CR>
 
 let mapleader="\<SPACE>"
 
@@ -18,6 +22,10 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'neovim/nvim-lspconfig'
+Plug 'ellisonleao/glow.nvim'
+Plug 'jakewvincent/mkdnflow.nvim'
+Plug 'vim-airline/vim-airline'
+Plug 'terryma/vim-multiple-cursors'
 
 " Telescope stuffs
 Plug 'nvim-lua/plenary.nvim'
@@ -37,6 +45,9 @@ Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 " - scientific calculator
 " - comment banner
 " - etc
+
+Plug 'lewis6991/gitsigns.nvim'
+
 call plug#end()
 
 " Telescope config
@@ -66,10 +77,14 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let NERDTreeShowHidden=1
 
 " Tokyo Night colorscheme config
-" let g:tokyonight_style = "night"
-" colorscheme tokyonight
-"
+let g:tokyonight_style = "night"
+colorscheme tokyonight
 
+" Glow config
+noremap <leader>p :Glow<CR>
+
+" Mkdn Config
+noremap <leader>fl :MkdnFollowPath<CR>
 
 " Lua
 lua <<EOF
@@ -116,7 +131,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'gopls' }
+local servers = { 'pyright', 'gopls'}
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
@@ -126,5 +141,19 @@ for _, lsp in pairs(servers) do
     }
   }
 end
+
+require'lspconfig'.golangci_lint_ls.setup{}
+
+-- Mkdnflow config
+require('mkdnflow').setup({
+  default_mappings = false,
+})
+
+--
+require('gitsigns').setup{
+  on_attach = function(bufnr)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>hd', '<cmd>:Gitsigns diffthis<CR>', opts)
+  end
+}
 
 EOF
