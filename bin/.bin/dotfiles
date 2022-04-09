@@ -1,0 +1,44 @@
+#!/bin/bash
+
+VERB=$1
+
+pushd $PWD > /dev/null
+cd $HOME/.dotfiles
+
+FILES=(nvim i3)
+
+case $VERB in
+clean)
+echo "cleaning things"
+for file in "${FILES[@]}"
+do
+  echo "... removing $file!"
+  stow -D $file
+done
+;;
+install)
+echo "installing things"
+for file in "${FILES[@]}"
+do
+  echo "... installing $file!"
+  stow $file
+done
+;;
+redo)
+echo "redoing things"
+for file in "${FILES[@]}"
+do
+  echo "... redoing $file!"
+  stow -R $file
+done
+;;
+*)
+echo "Uhhh what was it you wanted me to do?"
+echo
+echo "clean:   removes all stowed files"
+echo "install: stows all files"
+echo "redo:    restows all files"
+exit 1
+esac
+
+popd > /dev/null
