@@ -26,6 +26,8 @@ Plug 'ellisonleao/glow.nvim'
 Plug 'jakewvincent/mkdnflow.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'lewis6991/gitsigns.nvim'
+Plug 'neomake/neomake'
 
 " Telescope stuffs
 Plug 'nvim-lua/plenary.nvim'
@@ -45,8 +47,6 @@ Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 " - scientific calculator
 " - comment banner
 " - etc
-
-Plug 'lewis6991/gitsigns.nvim'
 
 call plug#end()
 
@@ -131,7 +131,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'gopls'}
+local servers = { 'pyright', 'gopls' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,

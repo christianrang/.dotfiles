@@ -71,6 +71,12 @@ ZSH_THEME="robbyrussell"
 plugins=(
     git
     zsh-autosuggestions
+    kubectl
+    golang
+    python
+    docker
+    react-native
+    terraform
 )
 
 source $ZSH/oh-my-zsh.sh
