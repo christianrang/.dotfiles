@@ -7,7 +7,8 @@ set colorcolumn=80,120
 set spell spelllang=en_us
 
 noremap <leader>sc :set spell!<CR>
-noremap <leader>ml :make lint<CR>
+noremap <leader>ml :! make lint<CR>
+noremap <leader>mr :! make run<CR>
 noremap <leader>jq :%!jq<CR>
 
 let mapleader="\<SPACE>"
