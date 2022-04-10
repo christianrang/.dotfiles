@@ -3,6 +3,8 @@
 # Lazy way to install packages. Ideally this will be handled by ansible one day
 
 sudo pacman -Syu
+sudo pacman -S stow
+sudo pacman -S neovim 
 sudo pacman -S go
 sudo pacman -S npm
 sudo pacman -S python
@@ -20,4 +22,4 @@ go install github.com/nametake/golangci-lint-langserver@latest
 go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.42.1
 
 # install pyright
-npm install -g pyright
+sudo npm install -g pyright
