@@ -5,11 +5,19 @@ set cursorline
 set hlsearch
 set colorcolumn=80,120
 set spell spelllang=en_us
+set splitbelow
+set relativenumber
 
 noremap <leader>sc :set spell!<CR>
 noremap <leader>ml :! make lint<CR>
 noremap <leader>mr :! make run<CR>
 noremap <leader>jq :%!jq<CR>
+nnoremap <leader>t :split term://zsh<CR>
+" returns terminal to normal mode. this is slowwwwwwww
+tnoremap <Esc> <C-\><C-n>
+
+" start terminal in insert mode
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
 let mapleader="\<SPACE>"
 
