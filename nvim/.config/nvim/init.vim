@@ -27,16 +27,18 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'kien/ctrlp.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'neovim/nvim-lspconfig'
 Plug 'ellisonleao/glow.nvim'
-Plug 'jakewvincent/mkdnflow.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'neomake/neomake'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'romgrk/nvim-treesitter-context'
+Plug 'jubnzv/mdeval.nvim'
 
 " Telescope stuffs
 Plug 'nvim-lua/plenary.nvim'
@@ -59,6 +61,10 @@ Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 
 call plug#end()
 
+" set to 1, echo preview page url in command line when open preview page
+" default is 0
+let g:mkdp_echo_preview_url = 1
+
 " Telescope config
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -78,11 +84,6 @@ autocmd StdinReadPre * let s:std_in=1
 "autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
 autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 
-" UltiSnips: Trigger configuration
-let g:UltiSnipsExpandTrigger="<Tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-
 let NERDTreeShowHidden=1
 
 " Tokyo Night colorscheme config
@@ -92,8 +93,7 @@ colorscheme tokyonight
 " Glow config
 noremap <leader>p :Glow<CR>
 
-" Mkdn Config
-noremap <leader>fl :MkdnFollowPath<CR>
+let g:go_debug_windows = {'vars': 'rightbelow 50vnew', 'stack': 'rightbelow 10new', 'goroutines': 'rightbelow 10new',}
 
 " Lua
 lua <<EOF
@@ -153,16 +153,65 @@ end
 
 require'lspconfig'.golangci_lint_ls.setup{}
 
--- Mkdnflow config
-require('mkdnflow').setup({
-  default_mappings = false,
-})
+local ts_utils = require 'nvim-treesitter.ts_utils'
+require'treesitter-context'.setup{
+    enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+    throttle = true, -- Throttles plugin updates (may improve performance)
+    max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
+    patterns = { -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
+        -- For all filetypes
+        -- Note that setting an entry here replaces all other patterns for this entry.
+        -- By setting the 'default' entry below, you can control which nodes you want to
+        -- appear in the context window.
+        default = {
+            'class',
+            'function',
+            'method',
+            -- 'for', -- These won't appear in the context
+            -- 'while',
+            -- 'if',
+            -- 'switch',
+            -- 'case',
+        },
+      golang = {
+        "func",
+        },
+        -- Example for a specific filetype.
+        -- If a pattern is missing, *open a PR* so everyone can benefit.
+        --   rust = {
+        --       'impl_item',
+        --   },
+    },
+    exact_patterns = {
+        -- Example for a specific filetype with Lua patterns
+        -- Treat patterns.rust as a Lua pattern (i.e "^impl_item$" will
+        -- exactly match "impl_item" only)
+        -- rust = true, 
+    }
+}
 
---
 require('gitsigns').setup{
   on_attach = function(bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>hd', '<cmd>:Gitsigns diffthis<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>hb', '<cmd>:Gitsigns blame_line<CR>', opts)
   end
 }
+
+require 'mdeval'.setup({
+  -- Don't ask before executing code blocks
+  require_confirmation=false,
+  -- Change code blocks evaluation options.
+  eval_options = {
+    -- Set custom configuration for C++
+    cpp = {
+      command = {"clang++", "-std=c++20", "-O0"},
+      default_header = [[
+    #include <iostream>
+    #include <vector>
+    using namespace std;
+      ]]
+    },
+  ,
+})
 
 EOF
