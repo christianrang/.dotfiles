@@ -36,9 +36,24 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'neomake/neomake'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'romgrk/nvim-treesitter-context'
 Plug 'jubnzv/mdeval.nvim'
+Plug 'ThePrimeagen/harpoon'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+Plug 'numToStr/Comment.nvim'
+
+" React things
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'jparise/vim-graphql'
+Plug 'maxmellon/vim-jsx-pretty'
+
+Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+
+" treesitter context
+Plug 'nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-context'
 
 " Telescope stuffs
 Plug 'nvim-lua/plenary.nvim'
@@ -77,6 +92,10 @@ nnoremap <leader>gr <cmd>GoRun<cr>
 nnoremap <leader>gt <cmd>GoTest<cr>
 nnoremap <leader>gf <cmd>GoTestFunc<cr>
 
+" prettier config
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+
 " NerdTree keybinds
 nnoremap <leader>nt <cmd>NERDTreeToggle<cr>
 
@@ -93,7 +112,11 @@ colorscheme tokyonight
 " Glow config
 noremap <leader>p :Glow<CR>
 
-let g:go_debug_windows = {'vars': 'rightbelow 50vnew', 'stack': 'rightbelow 10new', 'goroutines': 'rightbelow 10new',}
+" markdown-preview config
+"
+" set to 1, echo preview page url in command line when open preview page
+" default is 0
+let g:mkdp_echo_preview_url = 1
 
 " Lua
 lua <<EOF
@@ -140,7 +163,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'gopls' }
+local servers = { 'pyright', 'gopls', 'eslint', 'html', "flow" }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
@@ -211,7 +234,9 @@ require 'mdeval'.setup({
     using namespace std;
       ]]
     },
-  ,
+  },
 })
+
+require('Comment').setup()
 
 EOF
