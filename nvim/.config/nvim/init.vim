@@ -36,9 +36,13 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'neomake/neomake'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+Plug 'jubnzv/mdeval.nvim'
+Plug 'numToStr/Comment.nvim'
+Plug 'ThePrimeagen/harpoon'
+
+Plug 'nvim-treesitter/playground'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'romgrk/nvim-treesitter-context'
-Plug 'jubnzv/mdeval.nvim'
 
 " Telescope stuffs
 Plug 'nvim-lua/plenary.nvim'
@@ -85,6 +89,9 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 
 let NERDTreeShowHidden=1
+
+" COQ autostart
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | COQnow | endif
 
 " Tokyo Night colorscheme config
 let g:tokyonight_style = "night"
@@ -153,42 +160,7 @@ end
 
 require'lspconfig'.golangci_lint_ls.setup{}
 
-local ts_utils = require 'nvim-treesitter.ts_utils'
-require'treesitter-context'.setup{
-    enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-    throttle = true, -- Throttles plugin updates (may improve performance)
-    max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
-    patterns = { -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
-        -- For all filetypes
-        -- Note that setting an entry here replaces all other patterns for this entry.
-        -- By setting the 'default' entry below, you can control which nodes you want to
-        -- appear in the context window.
-        default = {
-            'class',
-            'function',
-            'method',
-            -- 'for', -- These won't appear in the context
-            -- 'while',
-            -- 'if',
-            -- 'switch',
-            -- 'case',
-        },
-      golang = {
-        "func",
-        },
-        -- Example for a specific filetype.
-        -- If a pattern is missing, *open a PR* so everyone can benefit.
-        --   rust = {
-        --       'impl_item',
-        --   },
-    },
-    exact_patterns = {
-        -- Example for a specific filetype with Lua patterns
-        -- Treat patterns.rust as a Lua pattern (i.e "^impl_item$" will
-        -- exactly match "impl_item" only)
-        -- rust = true, 
-    }
-}
+require('Comment').setup()
 
 require('gitsigns').setup{
   on_attach = function(bufnr)
@@ -196,22 +168,5 @@ require('gitsigns').setup{
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>hb', '<cmd>:Gitsigns blame_line<CR>', opts)
   end
 }
-
-require 'mdeval'.setup({
-  -- Don't ask before executing code blocks
-  require_confirmation=false,
-  -- Change code blocks evaluation options.
-  eval_options = {
-    -- Set custom configuration for C++
-    cpp = {
-      command = {"clang++", "-std=c++20", "-O0"},
-      default_header = [[
-    #include <iostream>
-    #include <vector>
-    using namespace std;
-      ]]
-    },
-  ,
-})
 
 EOF
