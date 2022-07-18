@@ -58,7 +58,7 @@ ZSH_THEME="robbyrussell"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="yyyy-mm-dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -71,10 +71,11 @@ ZSH_THEME="robbyrussell"
 plugins=(
     git
     zsh-autosuggestions
-    kubectl
     golang
-    python
+    z
     docker
+    kubectl
+    python
     react-native
     terraform
 )
@@ -106,21 +107,26 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+alias ll="ls -l"
 alias xclip="pbcopy"
-export GOPATH="/Users/christianrang/progDev/go"
-export PATH="$PATH:$GOPATH/bin"
-
-# Kubenetes stuff
-alias k="kubectl"
-source <(kubectl completion zsh)
-
 # Neovim
 alias vim="nvim"
 export EDITOR="nvim"
+
+# Kubernetes stuffs
+alias k=kubectl
+source <(kubectl completion zsh)
+alias kctx=kubectx
+alias kns=kubens
+
+alias glow="glow -p"
 
 # Tmux stuffs
 # Start Tmux automatically
 if [ "$TMUX" = "" ]; then tmux attach; fi
 
+export GOPATH="/Users/christianrang/progDev/go"
+export PATH="$PATH:$GOPATH/bin"
+
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
