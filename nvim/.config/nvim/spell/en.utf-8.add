@@ -23,7 +23,7 @@ package/!
 time/!
 #72/!
 172/!
-gitignore/!
+#itignore/!
 ZaVnC4dhaV1gR8u/!
 sumologic/!
 import/!
@@ -91,3 +91,17 @@ of/!
 #quired
 host/!
 environment/!
+gitignore/!
+app/!
+app
+port/!
+struct
+APP/!
+linux/!
+func/!
+api_key/!
+build/!
+build
+api/!
+personalsite
+font/!
