@@ -94,7 +94,7 @@ nnoremap <leader>gf <cmd>GoTestFunc<cr>
 
 " prettier config
 let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.html PrettierAsync
 
 " NerdTree keybinds
 nnoremap <leader>nt <cmd>NERDTreeToggle<cr>
