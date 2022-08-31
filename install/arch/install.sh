@@ -23,3 +23,13 @@ go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.42.1
 
 # install pyright
 sudo npm install -g pyright
+
+# install rust-analyzer
+mkdir -p ~/.local/bin
+curl -L https://github.com/rust-lang/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/.local/bin/rust-analyzer
+chmod +x ~/.local/bin/rust-analyzer
+
+# install rls
+rustup update
+rustup component add rls rust-analysis rust-src
+
