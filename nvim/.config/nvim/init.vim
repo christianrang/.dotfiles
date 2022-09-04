@@ -115,6 +115,9 @@ colorscheme tokyonight
 " Glow config
 noremap <leader>p :Glow<CR>
 
+" Git blame shortcut
+noremap <leader>gb :Git blame<CR>
+
 " markdown-preview config
 "
 " set to 1, echo preview page url in command line when open preview page
@@ -140,6 +143,16 @@ vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<C
 vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+
+-- Telescope
+require("telescope").load_extension('harpoon')
+
+-- Harpoon config
+vim.api.nvim_set_keymap('n', '<space>hm', '<cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<space>ha', '<cmd>lua require("harpoon.mark").add_file()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<space>hp', '<cmd>lua require("harpoon.ui").nav_prev()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<space>hn', '<cmd>lua require("harpoon.ui").nav_next()<CR>', opts)
+
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
