@@ -109,8 +109,7 @@ let NERDTreeShowHidden=1
 autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | COQnow | endif
 
 " Tokyo Night colorscheme config
-let g:tokyonight_style = "night"
-colorscheme tokyonight
+colorscheme tokyonight-night
 
 " Glow config
 noremap <leader>p :Glow<CR>
