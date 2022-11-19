@@ -7,6 +7,7 @@ set colorcolumn=80,120
 set spell spelllang=en_us
 set splitbelow
 set relativenumber
+set termguicolors
 
 noremap <leader>sc :set spell!<CR>
 noremap <leader>ml :! make lint<CR>
@@ -39,6 +40,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'jubnzv/mdeval.nvim'
 Plug 'numToStr/Comment.nvim'
 Plug 'ThePrimeagen/harpoon'
+Plug 'rebelot/kanagawa.nvim'
 
 " React things
 Plug 'pangloss/vim-javascript'
@@ -94,7 +96,7 @@ nnoremap <leader>gf <cmd>GoTestFunc<cr>
 
 " prettier config
 let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.html PrettierAsync
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.html PrettierAsync
 
 " NerdTree keybinds
 nnoremap <leader>nt <cmd>NERDTreeToggle<cr>
@@ -108,9 +110,6 @@ let NERDTreeShowHidden=1
 " COQ autostart
 autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | COQnow | endif
 
-" Tokyo Night colorscheme config
-colorscheme tokyonight-night
-
 " Glow config
 noremap <leader>p :Glow<CR>
 
@@ -119,6 +118,8 @@ noremap <leader>p :Glow<CR>
 " set to 1, echo preview page url in command line when open preview page
 " default is 0
 let g:mkdp_echo_preview_url = 1
+
+colorscheme tokyonight-night
 
 " Lua
 lua <<EOF
@@ -149,9 +150,9 @@ local on_attach = function(client, bufnr)
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>Telescope lsp_definitions<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>Telescope lsp_implementations<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
@@ -159,7 +160,7 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>Telescope lsp_references<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
