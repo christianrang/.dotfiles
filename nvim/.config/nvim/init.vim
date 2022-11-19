@@ -76,6 +76,12 @@ Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 " - comment banner
 " - etc
 
+Plug 'mfussenegger/nvim-dap'
+Plug 'leoluz/nvim-dap-go'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'theHamsta/nvim-dap-virtual-text'
+Plug 'nvim-telescope/telescope-dap.nvim'
+
 call plug#end()
 
 " set to 1, echo preview page url in command line when open preview page
@@ -88,6 +94,15 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>gs <cmd>Telescope git_status<cr>
+nnoremap <leader>km <cmd>Telescope keymaps<cr>
+nnoremap z= <cmd>Telescope spell_suggest<cr>
+nnoremap <leader>ht <cmd>Telescope help_tags<cr>
+
+nnoremap <leader>dc <cmd>DapContinue<cr>
+nnoremap <leader>c <cmd>DapContinue<cr>
+nnoremap <leader>db <cmd>DapToggleBreakpoint<cr>
+nnoremap <leader>du <cmd>lua require("dapui").toggle()<cr>
 
 " vim-go keybinds
 nnoremap <leader>gr <cmd>GoRun<cr>
@@ -188,5 +203,13 @@ require('gitsigns').setup{
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>hb', '<cmd>:Gitsigns blame_line<CR>', opts)
   end
 }
+
+require('dap-go').setup()
+require('telescope').load_extension('dap')
+require("dapui").setup()
+require("nvim-dap-virtual-text").setup{
+  enabled = true,
+}
+
 
 EOF
