@@ -2,50 +2,50 @@
 colors:
   # Default colors
   primary:
-    background: '#1A1721'
-    foreground: '#A5A791'
+    background: "#1A1721"
+    foreground: "#A5A791"
 
   # Normal colors
   normal:
-    black:   '0x10100E'
-    red:     '0xC40233'
-    green:   '#5B6B40'
-    yellow:  '0xFFD700'
-    blue:    '#205973'
-    magenta: '0x9A4EAE'
-    cyan:    '0x20B2AA'
-    white:   '#A5A791'
+    black: "0x10100E"
+    red: "0xC40233"
+    green: "#5B6B40"
+    yellow: "0xFFD700"
+    blue: "#205973"
+    magenta: "0x9A4EAE"
+    cyan: "0x20B2AA"
+    white: "#A5A791"
 
   # Bright colors
   bright:
-    black:   '0x696969'
-    red:     '0xFF2400'
-    green:   '0x03C03C'
-    yellow:  '0xFDFF00'
-    blue:    '#205973'
-    magenta: '0xFF1493'
-    cyan:    '0x00CCCC'
-    white:   '#A5A791'
+    black: "0x696969"
+    red: "0xFF2400"
+    green: "0x03C03C"
+    yellow: "0xFDFF00"
+    blue: "#205973"
+    magenta: "0xFF1493"
+    cyan: "0x00CCCC"
+    white: "#A5A791"
 
   transparent_background_colors: true
 
 font:
-    normal:
-      family: monospace
-      style: Regular
+  size: 14
+  normal:
+    family: roboto mono
+    style: Regular
 
-    bold: 
-      family: monospace 
-      style: Bold
+  bold:
+    family: roboto mono
+    style: Bold
 
-    italic: 
-      family: monospace
-      style: Italic 
+  italic:
+    family: roboto mono
+    style: Italic
 
-    bold_italic: 
-      family: monospace 
-      style: Bold Italic
-      size: 11
+  bold_italic:
+    family: roboto mono
+    style: Bold Italic
 
 window:
   opacity: 0.95
