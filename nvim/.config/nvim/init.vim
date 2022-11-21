@@ -41,6 +41,8 @@ Plug 'jubnzv/mdeval.nvim'
 Plug 'numToStr/Comment.nvim'
 Plug 'ThePrimeagen/harpoon'
 Plug 'rebelot/kanagawa.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'voldikss/vim-floaterm'
 
 " React things
 Plug 'pangloss/vim-javascript'
@@ -108,6 +110,8 @@ nnoremap <leader>du <cmd>lua require("dapui").toggle()<cr>
 nnoremap <leader>gr <cmd>GoRun<cr>
 nnoremap <leader>gt <cmd>GoTest<cr>
 nnoremap <leader>gf <cmd>GoTestFunc<cr>
+
+nnoremap <leader>tt <cmd>FloatermToggle<cr>
 
 " prettier config
 let g:prettier#autoformat = 0
