@@ -7,6 +7,7 @@ set colorcolumn=80,120
 set spell spelllang=en_us
 set splitbelow
 set relativenumber
+set termguicolors
 
 noremap <leader>sc :set spell!<CR>
 noremap <leader>ml :! make lint<CR>
@@ -40,6 +41,9 @@ Plug 'jubnzv/mdeval.nvim'
 Plug 'numToStr/Comment.nvim'
 Plug 'ThePrimeagen/harpoon'
 Plug 'stevearc/aerial.nvim'
+Plug 'rebelot/kanagawa.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'voldikss/vim-floaterm'
 
 " React things
 Plug 'pangloss/vim-javascript'
@@ -75,6 +79,12 @@ Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 " - comment banner
 " - etc
 
+Plug 'mfussenegger/nvim-dap'
+Plug 'leoluz/nvim-dap-go'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'theHamsta/nvim-dap-virtual-text'
+Plug 'nvim-telescope/telescope-dap.nvim'
+
 call plug#end()
 
 " set to 1, echo preview page url in command line when open preview page
@@ -87,16 +97,27 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>gs <cmd>Telescope git_status<cr>
+nnoremap <leader>km <cmd>Telescope keymaps<cr>
+nnoremap z= <cmd>Telescope spell_suggest<cr>
+nnoremap <leader>ht <cmd>Telescope help_tags<cr>
+
+nnoremap <leader>dc <cmd>DapContinue<cr>
+nnoremap <leader>c <cmd>DapContinue<cr>
+nnoremap <leader>db <cmd>DapToggleBreakpoint<cr>
+nnoremap <leader>du <cmd>lua require("dapui").toggle()<cr>
 
 " vim-go keybinds
 nnoremap <leader>gr <cmd>GoRun<cr>
 nnoremap <leader>gt <cmd>GoTest<cr>
 nnoremap <leader>gf <cmd>GoTestFunc<cr>
 
+nnoremap <leader>tt <cmd>FloatermToggle<cr>
+
 " prettier config
 let g:prettier#autoformat = 0
 " autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.html,*.md PrettierAsync
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.html PrettierAsync
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.html PrettierAsync
 
 " NerdTree keybinds
 nnoremap <leader>nt <cmd>NERDTreeToggle<cr>
@@ -110,9 +131,6 @@ let NERDTreeShowHidden=1
 " COQ autostart
 autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | COQnow | endif
 
-" Tokyo Night colorscheme config
-colorscheme tokyonight-moon
-
 " Glow config
 noremap <leader>p :Glow<CR>
 
@@ -124,6 +142,8 @@ noremap <leader>gb :Git blame<CR>
 " set to 1, echo preview page url in command line when open preview page
 " default is 0
 let g:mkdp_echo_preview_url = 1
+
+colorscheme tokyonight-night
 
 " Lua
 lua <<EOF
@@ -144,6 +164,7 @@ vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<C
 vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<space>dl', '<cmd>Telescope diagnostics<CR>', opts)
 
 -- Telescope
 require("telescope").load_extension('harpoon')
@@ -165,9 +186,9 @@ local on_attach = function(client, bufnr)
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>Telescope lsp_definitions<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>Telescope lsp_implementations<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
@@ -175,7 +196,7 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>Telescope lsp_references<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
@@ -207,5 +228,12 @@ require('aerial').setup({
     vim.api.nvim_set_keymap('n', '<space>ao', '<cmd>Telescope aerial<CR>', opts)
   end
 })
+
+require('dap-go').setup()
+require('telescope').load_extension('dap')
+require("dapui").setup()
+require("nvim-dap-virtual-text").setup{
+  enabled = true,
+}
 
 EOF
