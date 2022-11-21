@@ -39,6 +39,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'jubnzv/mdeval.nvim'
 Plug 'numToStr/Comment.nvim'
 Plug 'ThePrimeagen/harpoon'
+Plug 'stevearc/aerial.nvim'
 
 " React things
 Plug 'pangloss/vim-javascript'
@@ -94,6 +95,7 @@ nnoremap <leader>gf <cmd>GoTestFunc<cr>
 
 " prettier config
 let g:prettier#autoformat = 0
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.html,*.md PrettierAsync
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.html PrettierAsync
 
 " NerdTree keybinds
@@ -109,8 +111,7 @@ let NERDTreeShowHidden=1
 autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | COQnow | endif
 
 " Tokyo Night colorscheme config
-let g:tokyonight_style = "night"
-colorscheme tokyonight
+colorscheme tokyonight-moon
 
 " Glow config
 noremap <leader>p :Glow<CR>
@@ -146,9 +147,10 @@ vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<C
 
 -- Telescope
 require("telescope").load_extension('harpoon')
+require("telescope").load_extension('aerial')
 
 -- Harpoon config
-vim.api.nvim_set_keymap('n', '<space>hm', '<cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<space>hl', '<cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<space>ha', '<cmd>lua require("harpoon.mark").add_file()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<space>hp', '<cmd>lua require("harpoon.ui").nav_prev()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<space>hn', '<cmd>lua require("harpoon.ui").nav_next()<CR>', opts)
@@ -183,14 +185,13 @@ local servers = { 'pyright', 'gopls', 'eslint', 'html', "flow", "rls", "rust_ana
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
-    flags = {
-      -- This will be the default in neovim 0.7+
-      debounce_text_changes = 150,
-    }
   }
 end
 
-require'lspconfig'.golangci_lint_ls.setup{}
+-- aerial things
+require'lspconfig'.golangci_lint_ls.setup{
+  on_attach = require("aerial").on_attach
+}
 
 require('Comment').setup()
 
@@ -200,5 +201,11 @@ require('gitsigns').setup{
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>hb', '<cmd>:Gitsigns blame_line<CR>', opts)
   end
 }
+
+require('aerial').setup({
+  on_attach = function(bufnr)
+    vim.api.nvim_set_keymap('n', '<space>ao', '<cmd>Telescope aerial<CR>', opts)
+  end
+})
 
 EOF
