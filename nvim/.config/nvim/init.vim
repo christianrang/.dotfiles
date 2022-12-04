@@ -13,12 +13,6 @@ noremap <leader>sc :set spell!<CR>
 noremap <leader>ml :! make lint<CR>
 noremap <leader>mr :! make run<CR>
 noremap <leader>jq :%!jq<CR>
-nnoremap <leader>t :split term://zsh<CR>
-" returns terminal to normal mode. this is slowwwwwwww
-tnoremap <Esc> <C-\><C-n>
-
-" start terminal in insert mode
-au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
 let mapleader="\<SPACE>"
 
@@ -43,6 +37,7 @@ Plug 'ThePrimeagen/harpoon'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'voldikss/vim-floaterm'
+Plug 'windwp/nvim-autopairs'
 
 " React things
 Plug 'pangloss/vim-javascript'
@@ -89,6 +84,9 @@ call plug#end()
 " set to 1, echo preview page url in command line when open preview page
 " default is 0
 let g:mkdp_echo_preview_url = 1
+
+" workaround for the issue https://github.com/preservim/nerdtree/issues/1321
+let g:NERDTreeMinimalMenu=1
 
 " Telescope config
 " Find files using Telescope command-line sugar.
@@ -214,5 +212,7 @@ require("dapui").setup()
 require("nvim-dap-virtual-text").setup{
   enabled = true,
 }
+
+require("nvim-autopairs").setup{}
 
 EOF
