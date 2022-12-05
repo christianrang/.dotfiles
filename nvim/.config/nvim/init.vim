@@ -9,6 +9,12 @@ set splitbelow
 set relativenumber
 set termguicolors
 
+nnoremap <leader>t :split term://zsh<CR>
+tnoremap <Esc> <C-\><C-n>
+
+" start terminal in insert mode
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+
 noremap <leader>sc :set spell!<CR>
 noremap <leader>ml :! make lint<CR>
 noremap <leader>mr :! make run<CR>
