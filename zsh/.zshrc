@@ -71,6 +71,7 @@ HIST_STAMPS="yyyy-mm-dd"
 plugins=(
     git
     zsh-autosuggestions
+    zsh-syntax-highlighting
     golang
     z
     docker
@@ -108,6 +109,11 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Install zsh-autosuggestions if it is not installed
+[ ! -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ] && git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+# Install zsh-syntax-highlighting if it is not installed
+[ ! -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ] && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
 alias ll="ls -l"
 alias xclip="pbcopy"
 # Neovim
@@ -124,9 +130,11 @@ alias glow="glow -p"
 
 # Tmux stuffs
 # Start Tmux automatically
-if [ "$TMUX" = "" ]; then tmux attach; fi
+# if [ "$TMUX" = "" ]; then tmux attach; fi
 
 export GOPATH="/Users/christianrang/progDev/go"
 export PATH="$PATH:$GOPATH/bin"
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+. /opt/asdf-vm/asdf.sh
