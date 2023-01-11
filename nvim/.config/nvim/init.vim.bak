@@ -44,6 +44,7 @@ Plug 'stevearc/aerial.nvim'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'voldikss/vim-floaterm'
+Plug 'jodosha/vim-godebug'
 
 " React things
 Plug 'pangloss/vim-javascript'
@@ -59,12 +60,13 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typ
 Plug 'nvim-treesitter/playground'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-context'
+Plug 'nvim-treesitter/playground'
 
 " Telescope stuffs
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
-" main one
+" main coq
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 " 9000+ Snippets
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
@@ -215,6 +217,8 @@ require'lspconfig'.golangci_lint_ls.setup{
 }
 
 require('Comment').setup()
+
+require'lspconfig'.rust_analyzer.setup{}
 
 require('gitsigns').setup{
   on_attach = function(bufnr)
