@@ -37,6 +37,7 @@ return require('packer').startup(function(use)
   use('ThePrimeagen/vim-be-good')
   use('vim-airline/vim-airline')
   use('lewis6991/gitsigns.nvim')
+  use({'prettier/vim-prettier', run = 'yarn install --frozen-lockfile --production'})
 
   use {
 	  'VonHeikemen/lsp-zero.nvim',
