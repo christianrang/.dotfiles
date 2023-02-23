@@ -1,1 +1,2 @@
-require("misclikd")
+require("personal")
+require("cyderes")

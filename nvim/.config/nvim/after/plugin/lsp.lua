@@ -59,8 +59,8 @@ lsp.on_attach(function(client, bufnr)
       return
   end
 
-  vim.keymap.set("n", "gd", builtin.lsp_definitions, opts)
   vim.keymap.set("n", 'gi', builtin.lsp_implementations, opts)
+  vim.keymap.set("n", "gd", builtin.lsp_definitions, opts)
   vim.keymap.set("n", 'gr', builtin.lsp_references, opts)
   vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
   vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
