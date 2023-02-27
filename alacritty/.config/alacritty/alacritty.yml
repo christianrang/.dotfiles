@@ -32,20 +32,10 @@ colors:
 font:
   size: 14
   normal:
-    family: roboto mono
-    style: Regular
-
-  bold:
-    family: roboto mono
-    style: Bold
-
-  italic:
-    family: roboto mono
-    style: Italic
-
-  bold_italic:
-    family: roboto mono
-    style: Bold Italic
+    # brew tap homebrew/cask-fonts &&
+    # brew install --cask font-hack-nerd-font
+    # source: https://www.nerdfonts.com/font-downloads
+    family: hack nerd font
 
 window:
   opacity: 0.95
