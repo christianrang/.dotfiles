@@ -20,7 +20,7 @@ return require('packer').startup(function(use)
   use('nvim-treesitter/nvim-treesitter-context')
   use('towolf/vim-helm')
 
-  use({'fatih/vim-go', run = ':GoUpdateBinaries' })
+  -- use({'fatih/vim-go', run = ':GoUpdateBinaries' })
 
   use('theprimeagen/harpoon')
   use('mbbill/undotree')
@@ -82,5 +82,30 @@ return require('packer').startup(function(use)
       requires = {'kyazdani42/nvim-web-devicons',
       opt = true},
   }
+
+  use { "rcarriga/nvim-dap-ui",
+    requires = {"mfussenegger/nvim-dap"},
+    config = function()
+        require("dapui").setup()
+    end
+  }
+  use('theHamsta/nvim-dap-virtual-text')
+
+  use {'ray-x/go.nvim',
+  requires = {
+      {'ray-x/guihua.lua'},
+      {'neovim/nvim-lspconfig'},
+      {'mfussenegger/nvim-dap'},
+      {'rcarriga/nvim-dap-ui'},
+      {'theHamsta/nvim-dap-virtual-text'}
+    },
+    config = function()
+        require('go').setup()
+        require("nvim-dap-virtual-text").setup()
+    end
+  }
+
+  use('RishabhRD/popfix')
+  use('RishabhRD/nvim-cheat.sh')
 
 end)
