@@ -13,18 +13,12 @@ return require('packer').startup(function(use)
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  use('folke/tokyonight.nvim')
-
   use ('stevearc/aerial.nvim')
-
-  use({
-      'rose-pine/neovim',
-      as = 'rose-pine',
-  })
 
   use({'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'})
   use('nvim-treesitter/playground')
   use('nvim-treesitter/nvim-treesitter-context')
+  use('towolf/vim-helm')
 
   use({'fatih/vim-go', run = ':GoUpdateBinaries' })
 
@@ -68,6 +62,11 @@ return require('packer').startup(function(use)
   -- Colorschemes
   use('junegunn/seoul256.vim')
   use('haxibami/urara.vim')
+  use('folke/tokyonight.nvim')
+  use({
+      'rose-pine/neovim',
+      as = 'rose-pine',
+  })
 
     use {
     'NvChad/nvim-colorizer.lua',
