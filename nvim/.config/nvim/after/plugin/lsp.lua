@@ -6,7 +6,6 @@ lsp.preset("recommended")
 lsp.ensure_installed({
   'tsserver',
   'eslint',
-  'sumneko_lua',
   'rust_analyzer',
   'gopls',
   'pyright',
@@ -51,13 +50,8 @@ lsp.set_preferences({
     }
 })
 
-lsp.on_attach(function(client, bufnr)
+lsp.on_attach(function(_, bufnr)
   local opts = {buffer = bufnr, remap = false}
-
-  if client.name == "eslint" then
-      vim.cmd.LspStop('eslint')
-      return
-  end
 
   vim.keymap.set("n", 'gi', builtin.lsp_implementations, opts)
   vim.keymap.set("n", "gd", builtin.lsp_definitions, opts)
