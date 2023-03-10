@@ -89,23 +89,20 @@ return require('packer').startup(function(use)
         require("dapui").setup()
     end
   }
-  use('theHamsta/nvim-dap-virtual-text')
 
-  use {'ray-x/go.nvim',
-  requires = {
-      {'ray-x/guihua.lua'},
-      {'neovim/nvim-lspconfig'},
-      {'mfussenegger/nvim-dap'},
-      {'rcarriga/nvim-dap-ui'},
-      {'theHamsta/nvim-dap-virtual-text'}
-    },
-    config = function()
-        require('go').setup()
-        require("nvim-dap-virtual-text").setup()
-    end
-  }
+  -- use {'ray-x/go.nvim',
+  -- requires = {
+  --     {'ray-x/guihua.lua'},
+  --     {'neovim/nvim-lspconfig'},
+  --     {'mfussenegger/nvim-dap'},
+  --     {'rcarriga/nvim-dap-ui'},
+  --     {'theHamsta/nvim-dap-virtual-text'}
+  --   },
+  -- }
 
   use('RishabhRD/popfix')
   use('RishabhRD/nvim-cheat.sh')
+
+  use('fatih/vim-go')
 
 end)
