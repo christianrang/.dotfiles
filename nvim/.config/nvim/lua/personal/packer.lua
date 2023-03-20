@@ -105,4 +105,6 @@ return require('packer').startup(function(use)
 
   use('fatih/vim-go')
 
+  use("ellisonleao/glow.nvim")
+
 end)
