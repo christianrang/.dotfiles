@@ -68,12 +68,12 @@ return require('packer').startup(function(use)
       as = 'rose-pine',
   })
 
-    use {
+  use({
     'NvChad/nvim-colorizer.lua',
     config = function()
       require('colorizer').setup {}
     end
-  }
+  })
 
   use('Yggdroot/indentLine')
 
@@ -83,12 +83,12 @@ return require('packer').startup(function(use)
       opt = true},
   }
 
-  use { "rcarriga/nvim-dap-ui",
+  use({ "rcarriga/nvim-dap-ui",
     requires = {"mfussenegger/nvim-dap"},
     config = function()
         require("dapui").setup()
     end
-  }
+  })
 
   -- use {'ray-x/go.nvim',
   -- requires = {
@@ -116,4 +116,5 @@ return require('packer').startup(function(use)
 
   use("jubnzv/mdeval.nvim")
 
+  use("jbyuki/venn.nvim")
 end)
