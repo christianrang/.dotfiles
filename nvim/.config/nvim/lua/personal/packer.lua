@@ -107,4 +107,13 @@ return require('packer').startup(function(use)
 
   use("ellisonleao/glow.nvim")
 
+  use({'jakewvincent/mkdnflow.nvim',
+    rocks = 'luautf8', -- Ensures optional luautf8 dependency is installed
+    config = function()
+        require('mkdnflow').setup()
+    end
+  })
+
+  use("jubnzv/mdeval.nvim")
+
 end)
