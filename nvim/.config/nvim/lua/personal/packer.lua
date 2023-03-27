@@ -114,7 +114,8 @@ return require('packer').startup(function(use)
     end
   })
 
-  use("jubnzv/mdeval.nvim")
-
   use("jbyuki/venn.nvim")
+
+  use({ 'michaelb/sniprun', run = 'bash ./install.sh'})
+  use('rcarriga/nvim-notify')
 end)
