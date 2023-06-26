@@ -42,10 +42,29 @@ alias glow="glow -p"
 # Start Tmux automatically
 if [ "$TMUX" = "" ]; then tmux attach; fi
 
-export GOPATH="$HOME/progdev/go"
+export PROGDEV="$HOME/progdev"
+export GHPATH="$PROGDEV/github"
+export CRGHPATH="$PROGDEV/github/christianrang"
+export NOTES="$HOME/notes/"
+
+export GOPATH="$PROGDEV/go"
 export PATH="$PATH:$GOPATH/bin"
 
 . "$HOME/.asdf/asdf.sh"
 
-export GHPATH="$HOME/progdev/github"
-export CRGHPATH="$HOME/progdev/github/christianrang"
+# Source other RC's depending on system I'm using
+# for WSL
+if [ -f ~/.wslrc ]; then source ~/.wslrc; fi
+
+if [ ! -d $PROGDEV ]; then mkdir -p $PROGDEV; echo created $PROGDEV; fi
+if [ ! -d $GHPATH ]; then mkdir -p $GHPATH; echo created $GHPATH; fi
+if [ ! -d $CRGHPATH ]; then mkdir -p $CRGHPATH; echo created $CRGHPATH; fi
+if [ ! -d $NOTES ]; then mkdir -p $NOTES; echo created $NOTES; fi
+
+if [ ! -d ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions ]; then 
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+fi
+
+if [ ! -d ~/.asdf ]; then 
+    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
+fi
