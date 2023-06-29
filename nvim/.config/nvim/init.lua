@@ -1,2 +1,1 @@
 require("personal")
-require("cyderes")
