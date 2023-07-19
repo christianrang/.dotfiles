@@ -28,4 +28,4 @@ vim.opt.updatetime = 50
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
-vim.cmd('colorscheme urara')
+vim.cmd('colorscheme tokyonight-night')
