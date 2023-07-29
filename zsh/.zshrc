@@ -28,9 +28,7 @@ alias ll="ls -l"
 alias xclip="pbcopy"
 # Neovim
 alias vim="nvim"
-export EDITOR="nvim"
-
-# Kubernetes stuffs
+export EDITOR="nvim" # Kubernetes stuffs
 alias k=kubectl
 source <(kubectl completion zsh)
 alias kctx=kubectx
@@ -43,8 +41,8 @@ alias glow="glow -p"
 if [ "$TMUX" = "" ]; then tmux attach; fi
 
 export PROGDEV="$HOME/progdev"
-export GHPATH="$PROGDEV/github"
-export CRGHPATH="$PROGDEV/github/christianrang"
+export GITHUBPATH="$PROGDEV/github.com"
+export CRGHPATH="$GITHUBPATH/christianrang"
 export NOTES="$HOME/notes/"
 
 export GOPATH="$PROGDEV/go"
@@ -57,7 +55,7 @@ export PATH="$PATH:$GOPATH/bin"
 if [ -f ~/.wslrc ]; then source ~/.wslrc; fi
 
 if [ ! -d $PROGDEV ]; then mkdir -p $PROGDEV; echo created $PROGDEV; fi
-if [ ! -d $GHPATH ]; then mkdir -p $GHPATH; echo created $GHPATH; fi
+if [ ! -d GITHUBPATH ]; then mkdir -p GITHUBPATH; echo created GITHUBPATH; fi
 if [ ! -d $CRGHPATH ]; then mkdir -p $CRGHPATH; echo created $CRGHPATH; fi
 if [ ! -d $NOTES ]; then mkdir -p $NOTES; echo created $NOTES; fi
 
