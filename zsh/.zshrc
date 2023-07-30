@@ -55,7 +55,7 @@ export PATH="$PATH:$GOPATH/bin"
 if [ -f ~/.wslrc ]; then source ~/.wslrc; fi
 
 if [ ! -d $PROGDEV ]; then mkdir -p $PROGDEV; echo created $PROGDEV; fi
-if [ ! -d GITHUBPATH ]; then mkdir -p GITHUBPATH; echo created GITHUBPATH; fi
+if [ ! -d $GITHUBPATH ]; then mkdir -p $GITHUBPATH; echo created $GITHUBPATH; fi
 if [ ! -d $CRGHPATH ]; then mkdir -p $CRGHPATH; echo created $CRGHPATH; fi
 if [ ! -d $NOTES ]; then mkdir -p $NOTES; echo created $NOTES; fi
 
