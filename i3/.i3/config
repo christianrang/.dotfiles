@@ -33,7 +33,10 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id dmenu_recency
+# bindsym $mod+d exec --no-startup-id dmenu_recency
+bindsym $mod+d exec --no-startup-id "rofi -show drun"
+bindsym $mod+Shift+w exec --no-startup-id "rofi -show window"
+bindsym $mod+Ctrl+s exec --no-startup-id "rofi -show ssh"
 
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
@@ -281,11 +284,12 @@ exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
-exec --no-startup-id start_conky_maia
+# exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
 exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
+exec --no-startup-id polybar
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
@@ -320,35 +324,35 @@ exec_always --no-startup-id fix_xcursor
 # set_from_resource $term_color15    color15
 #
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
-bar {
-	# i3bar_command i3bar # commented to load sway
-	status_command i3status
-	position bottom
-
-## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-#	tray_output primary
-#	tray_output eDP1
-
-	bindsym button4 nop
-	bindsym button5 nop
-#   font xft:URWGothic-Book 11
-	strip_workspace_numbers yes
-
-    colors {
-        #background #222D31
-        #statusline #F9FAF9
-	background #1A1721
-        statusline #205973
-        separator  #A5A791
-
-#                      border  backgr. text
-        focused_workspace  #4A4942 #5B6B40 #222D31
-        active_workspace   #4A4942 #205973 #222D31
-        inactive_workspace #4A4942 #205973 #222D31
-        binding_mode       #16a085 #2C2C2C #F9FAF9
-        urgent_workspace   #16a085 #FDF6E3 #E5201D
-    }
-}
+# bar {
+# 	# i3bar_command i3bar # commented to load sway
+# 	status_command i3status
+# 	position bottom
+#
+# ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
+# #	tray_output primary
+# #	tray_output eDP1
+#
+# 	bindsym button4 nop
+# 	bindsym button5 nop
+# #   font xft:URWGothic-Book 11
+# 	strip_workspace_numbers yes
+#
+#     colors {
+#         #background #222D31
+#         #statusline #F9FAF9
+# 	background #1A1721
+#         statusline #205973
+#         separator  #A5A791
+#
+# #                      border  backgr. text
+#         focused_workspace  #4A4942 #5B6B40 #222D31
+#         active_workspace   #4A4942 #205973 #222D31
+#         inactive_workspace #4A4942 #205973 #222D31
+#         binding_mode       #16a085 #2C2C2C #F9FAF9
+#         urgent_workspace   #16a085 #FDF6E3 #E5201D
+#     }
+# }
 
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
