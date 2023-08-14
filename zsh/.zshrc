@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/mongodb/bin:$PATH
+export PATH=$HOME/.bin:/usr/local/bin:/usr/local/mongodb/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -53,6 +53,7 @@ export PATH="$PATH:$GOPATH/bin"
 # Source other RC's depending on system I'm using
 # for WSL
 if [ -f ~/.wslrc ]; then source ~/.wslrc; fi
+if [ -f ~/.linuxrc ]; then source ~/.linuxrc; fi
 
 if [ ! -d $PROGDEV ]; then mkdir -p $PROGDEV; echo created $PROGDEV; fi
 if [ ! -d $GITHUBPATH ]; then mkdir -p $GITHUBPATH; echo created $GITHUBPATH; fi
