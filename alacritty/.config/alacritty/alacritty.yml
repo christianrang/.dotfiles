@@ -38,4 +38,4 @@ font:
     family: hack nerd font
 
 window:
-  opacity: 0.95
+  opacity: 1
