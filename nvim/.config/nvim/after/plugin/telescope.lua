@@ -1,6 +1,7 @@
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set("n", "<leader>fa", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', 'z=', builtin.spell_suggest, {})
 vim.keymap.set('n', '<leader>ht', builtin.help_tags, {})
@@ -9,6 +10,7 @@ vim.keymap.set('n', '<leader>qf', builtin.quickfix, {})
 
 require("telescope").load_extension('harpoon')
 require("telescope").load_extension('aerial')
+require("telescope").load_extension("live_grep_args")
 
 local telescope = require("telescope")
 local telescopeConfig = require("telescope.config")
@@ -30,7 +32,7 @@ telescope.setup({
 	pickers = {
 		find_files = {
 			-- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
-			find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+			find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*", "--no-ignore" },
 		},
 	},
 })
