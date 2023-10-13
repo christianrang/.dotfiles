@@ -20,7 +20,7 @@ return require('packer').startup(function(use)
   use('nvim-treesitter/nvim-treesitter-context')
   use('towolf/vim-helm')
 
-  -- use({'fatih/vim-go', run = ':GoUpdateBinaries' })
+  use({'fatih/vim-go', run = ':GoUpdateBinaries' })
 
   use('theprimeagen/harpoon')
   use('mbbill/undotree')
@@ -60,6 +60,7 @@ return require('packer').startup(function(use)
   use("folke/zen-mode.nvim")
 
   -- Colorschemes
+  use('morhetz/gruvbox')
   use('junegunn/seoul256.vim')
   use('haxibami/urara.vim')
   use('folke/tokyonight.nvim')
@@ -104,8 +105,6 @@ return require('packer').startup(function(use)
 
   use('RishabhRD/popfix')
   use('RishabhRD/nvim-cheat.sh')
-
-  use('fatih/vim-go')
 
   use("ellisonleao/glow.nvim")
 

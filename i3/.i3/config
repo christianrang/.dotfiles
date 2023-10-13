@@ -34,7 +34,8 @@ bindsym $mod+Shift+q kill
 
 # start program launcher
 # bindsym $mod+d exec --no-startup-id dmenu_recency
-bindsym $mod+d exec --no-startup-id "rofi -show drun"
+bindsym $mod+d exec --no-startup-id "rofi -show run"
+bindsym Mod4+space exec --no-startup-id "rofi -show drun"
 bindsym $mod+Shift+w exec --no-startup-id "rofi -show window"
 bindsym $mod+Ctrl+s exec --no-startup-id "rofi -show ssh"
 
@@ -274,6 +275,8 @@ mode "resize" {
 # Lock screen
 bindsym $mod+9 exec --no-startup-id blurlock
 
+bindsym $mod+shift+a exec "brave --new-window https://algoexpert.io/questions"
+
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; picom -b
@@ -286,7 +289,7 @@ exec --no-startup-id clipit
 # exec_always --no-startup-id sbxkb
 # exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 10 -locker blurlock
+# exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec --no-startup-id polybar

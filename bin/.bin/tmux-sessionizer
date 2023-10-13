@@ -2,10 +2,14 @@
 
 # copied from https://github.com/ThePrimeagen
 
+if [[ -z $DEVPATHS ]]; then
+    DEVPATHS="/home/crang/progdev/github.com/christianrang /home/crang/progdev/gitlab.rang-corp.com/crang"
+fi
+
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/progdev/Github/christianrang ~/progdev/Github/FishtechCSOC -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find $(echo $DEVPATHS) -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then
