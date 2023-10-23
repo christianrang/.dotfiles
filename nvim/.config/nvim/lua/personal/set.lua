@@ -29,3 +29,5 @@ vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
 vim.cmd('colorscheme catppuccin')
+
+vim.cmd('imap <silent><script><expr> <C-J> copilot#Accept("<CR>")')

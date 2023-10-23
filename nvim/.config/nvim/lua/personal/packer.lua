@@ -119,4 +119,6 @@ return require('packer').startup(function(use)
 
   use({ 'michaelb/sniprun', run = 'bash ./install.sh'})
   use('rcarriga/nvim-notify')
+
+  use('github/copilot.vim')
 end)
