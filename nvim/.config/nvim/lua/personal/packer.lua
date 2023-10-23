@@ -56,6 +56,7 @@ return require('packer').startup(function(use)
     }
   }
 
+<<<<<<< HEAD
   use("folke/zen-mode.nvim")
 
   -- Colorschemes
@@ -71,6 +72,60 @@ return require('packer').startup(function(use)
       require('colorizer').setup {}
     end
   })
+=======
+    use ('stevearc/aerial.nvim')
+
+    use({'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'})
+    use('nvim-treesitter/playground')
+    use('nvim-treesitter/nvim-treesitter-context')
+    use('towolf/vim-helm')
+    use({
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        after = "nvim-treesitter",
+        requires = "nvim-treesitter/nvim-treesitter",
+    })
+
+    use({'fatih/vim-go', run = ':GoUpdateBinaries' })
+
+    use('theprimeagen/harpoon')
+    use('mbbill/undotree')
+    use('tpope/vim-fugitive')
+    use('numToStr/Comment.nvim')
+    use('scrooloose/nerdtree')
+    use('nvim-tree/nvim-web-devicons')
+    use('lewis6991/gitsigns.nvim')
+    use({'prettier/vim-prettier', run = 'yarn install --frozen-lockfile --production'})
+
+    use('alvan/vim-closetag')
+
+    use {
+        'VonHeikemen/lsp-zero.nvim',
+        requires = {
+          -- LSP Support
+          {'neovim/nvim-lspconfig'},
+          {'williamboman/mason.nvim'},
+          {'williamboman/mason-lspconfig.nvim'},
+
+          -- Autocompletion
+          {'hrsh7th/nvim-cmp'},
+          {'hrsh7th/cmp-buffer'},
+          {'hrsh7th/cmp-path'},
+          {'saadparwaiz1/cmp_luasnip'},
+          {'hrsh7th/cmp-nvim-lsp'},
+          {'hrsh7th/cmp-nvim-lua'},
+
+          -- Snippets
+          {'L3MON4D3/LuaSnip'},
+          {'rafamadriz/friendly-snippets'},
+        }
+    }
+
+    use("folke/zen-mode.nvim")
+
+    -- Colorschemes
+    use('folke/tokyonight.nvim')
+    use { "catppuccin/nvim", as = "catppuccin" }
+>>>>>>> bb2cda5 (chore: update alactritty config)
 
   use('Yggdroot/indentLine')
 
@@ -80,6 +135,7 @@ return require('packer').startup(function(use)
       opt = true},
   }
 
+<<<<<<< HEAD
   use({
     "rcarriga/nvim-dap-ui",
     requires = { "mfussenegger/nvim-dap" },
@@ -87,6 +143,9 @@ return require('packer').startup(function(use)
       require("dapui").setup()
     end
   })
+=======
+    use("vim-airline/vim-airline")
+>>>>>>> bb2cda5 (chore: update alactritty config)
 
   -- use {'ray-x/go.nvim',
   -- requires = {
@@ -98,10 +157,15 @@ return require('packer').startup(function(use)
   --   },
   -- }
 
+<<<<<<< HEAD
   use('RishabhRD/popfix')
   use('RishabhRD/nvim-cheat.sh')
 
   use("ellisonleao/glow.nvim")
+=======
+    use('RishabhRD/popfix')
+    use('RishabhRD/nvim-cheat.sh')
+>>>>>>> bb2cda5 (chore: update alactritty config)
 
   use({ 'michaelb/sniprun', run = 'bash ./install.sh' })
   use('rcarriga/nvim-notify')
