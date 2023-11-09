@@ -81,3 +81,5 @@ end
 lspconfig.golangci_lint_ls.setup {
   filetypes = {'go','gomod'}
 }
+
+vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<CR>", { silent = true })
