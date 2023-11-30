@@ -8,7 +8,7 @@ sudo apt install zsh\
     tmux \
     fd-find
 
-sudo snap install nvim --classic
+# sudo snap install nvim --classic
 
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3
 

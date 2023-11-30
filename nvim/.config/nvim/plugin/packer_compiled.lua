@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/crang/.cache/nvim/packer_hererocks/2.1.1694285958/share/lua/5.1/?.lua;/home/crang/.cache/nvim/packer_hererocks/2.1.1694285958/share/lua/5.1/?/init.lua;/home/crang/.cache/nvim/packer_hererocks/2.1.1694285958/lib/luarocks/rocks-5.1/?.lua;/home/crang/.cache/nvim/packer_hererocks/2.1.1694285958/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/crang/.cache/nvim/packer_hererocks/2.1.1694285958/lib/lua/5.1/?.so"
+local package_path_str = "/home/crang/.cache/nvim/packer_hererocks/2.1.1697887905/share/lua/5.1/?.lua;/home/crang/.cache/nvim/packer_hererocks/2.1.1697887905/share/lua/5.1/?/init.lua;/home/crang/.cache/nvim/packer_hererocks/2.1.1697887905/lib/luarocks/rocks-5.1/?.lua;/home/crang/.cache/nvim/packer_hererocks/2.1.1697887905/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/crang/.cache/nvim/packer_hererocks/2.1.1697887905/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -257,11 +257,6 @@ _G.packer_plugins = {
     path = "/home/crang/.local/share/nvim/site/pack/packer/start/popfix",
     url = "https://github.com/RishabhRD/popfix"
   },
-  ["rose-pine"] = {
-    loaded = true,
-    path = "/home/crang/.local/share/nvim/site/pack/packer/start/rose-pine",
-    url = "https://github.com/rose-pine/neovim"
-  },
   ["seoul256.vim"] = {
     loaded = true,
     path = "/home/crang/.local/share/nvim/site/pack/packer/start/seoul256.vim",
@@ -292,16 +287,6 @@ _G.packer_plugins = {
     path = "/home/crang/.local/share/nvim/site/pack/packer/start/urara.vim",
     url = "https://github.com/haxibami/urara.vim"
   },
-  ["venn.nvim"] = {
-    loaded = true,
-    path = "/home/crang/.local/share/nvim/site/pack/packer/start/venn.nvim",
-    url = "https://github.com/jbyuki/venn.nvim"
-  },
-  ["vim-airline"] = {
-    loaded = true,
-    path = "/home/crang/.local/share/nvim/site/pack/packer/start/vim-airline",
-    url = "https://github.com/vim-airline/vim-airline"
-  },
   ["vim-be-good"] = {
     loaded = true,
     path = "/home/crang/.local/share/nvim/site/pack/packer/start/vim-be-good",
@@ -311,11 +296,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/crang/.local/share/nvim/site/pack/packer/start/vim-closetag",
     url = "https://github.com/alvan/vim-closetag"
-  },
-  ["vim-floaterm"] = {
-    loaded = true,
-    path = "/home/crang/.local/share/nvim/site/pack/packer/start/vim-floaterm",
-    url = "https://github.com/voldikss/vim-floaterm"
   },
   ["vim-fugitive"] = {
     loaded = true,
@@ -350,14 +330,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: mkdnflow.nvim
-time([[Config for mkdnflow.nvim]], true)
-try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rmkdnflow\frequire\0", "config", "mkdnflow.nvim")
-time([[Config for mkdnflow.nvim]], false)
 -- Config for: nvim-dap-ui
 time([[Config for nvim-dap-ui]], true)
 try_loadstring("\27LJ\2\n3\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\ndapui\frequire\0", "config", "nvim-dap-ui")
 time([[Config for nvim-dap-ui]], false)
+-- Config for: mkdnflow.nvim
+time([[Config for mkdnflow.nvim]], true)
+try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rmkdnflow\frequire\0", "config", "mkdnflow.nvim")
+time([[Config for mkdnflow.nvim]], false)
 -- Config for: nvim-colorizer.lua
 time([[Config for nvim-colorizer.lua]], true)
 try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14colorizer\frequire\0", "config", "nvim-colorizer.lua")

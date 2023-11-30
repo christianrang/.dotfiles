@@ -8,7 +8,7 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    'nvim-telescope/telescope.nvim', tag = '0.1.4',
     -- or                            , branch = '0.1.x',
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
@@ -102,14 +102,6 @@ return require('packer').startup(function(use)
   use('RishabhRD/nvim-cheat.sh')
 
   use("ellisonleao/glow.nvim")
-
-  use({
-    'jakewvincent/mkdnflow.nvim',
-    rocks = 'luautf8', -- Ensures optional luautf8 dependency is installed
-    config = function()
-      require('mkdnflow').setup()
-    end
-  })
 
   use({ 'michaelb/sniprun', run = 'bash ./install.sh' })
   use('rcarriga/nvim-notify')
