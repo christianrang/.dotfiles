@@ -1,6 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/.bin:/usr/local/bin:/usr/local/mongodb/bin:$PATH
 
+set -o vi
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -35,6 +37,7 @@ alias kctx=kubectx
 alias kns=kubens
 
 alias glow="glow -p"
+alias cat="bat"
 
 # Tmux stuffs
 # Start Tmux automatically
