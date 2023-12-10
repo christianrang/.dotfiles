@@ -1,0 +1,30 @@
+#!/usr/bin/env zsh
+
+set -e
+
+source ~/.usr/local/lib/notes/lib.sh
+
+HELP="$0 [args]
+  -b    book name
+  -a    author name"
+
+while [ $# -gt 0 ]; do
+  case $1 in
+    -b)
+      book=$2
+      shift 2
+      ;;
+    -a)
+      author=$2
+      shift 2
+      ;;
+    *)
+      echo $HELP
+      exit 0
+      ;;
+  esac
+done
+
+BOOK_NAME=$(standardize_book_name_case $book $author)
+make_book_dir $BOOK_NAME
+copy_template "resource-book-notes.md" ~/vaults/personal/resources/books/$BOOK_NAME/$BOOK_NAME-index.md

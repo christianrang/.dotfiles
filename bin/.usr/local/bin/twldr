@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+tmux neww -c "#{pane_current_path}" "tldr $@; forever"

@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+
+if [ -z $BOOKS_DIR ]; then
+  BOOKS_DIR=$HOME/books
+fi
+
+BOOK_PATH=$(fd "(epub$|pdf$)" $BOOKS_DIR | fzf) 
+
+if [ -z $BOOK_PATH]; then
+  echo "No book selected"
+  exit 1
+fi
+
+tmux neww zathura $BOOK_PATH
