@@ -1,5 +1,13 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/.bin:/usr/local/bin:/usr/local/mongodb/bin:$PATH
+export PATH=$HOME/.asdf/installs/rust/1.74.0/bin:$PATH
 
 set -o vi
 
@@ -28,7 +36,6 @@ source $ZSH/oh-my-zsh.sh
 
 alias ll="ls -l"
 alias cat="bat"
-alias xclip="pbcopy"
 alias t="tmux"
 # Neovim
 alias vim="nvim"
@@ -54,7 +61,7 @@ export GITHUBPATH="$PROGDEV/github.com"
 export CRGHPATH="$GITHUBPATH/christianrang"
 export NOTES="$HOME/notes/"
 
-export DEVPATHS="/home/crang/progdev/github.com/christianrang /home/crang/progdev/gitlab.rang-corp.com/crang"
+export DEVPATHS="/home/crang/progdev/github.com/christianrang /home/crang/progdev/gitlab.rang-corp.com/crang /home/crang/progdev/github.com/fastly /home/crang/Documents/projects"
 
 export GOPATH="$PROGDEV/go"
 export PATH="$PATH:$GOPATH/bin"

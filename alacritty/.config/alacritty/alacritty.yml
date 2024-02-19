@@ -30,10 +30,12 @@
 #   transparent_background_colors: true
 
 font:
-  size: 14
+  size: 10
   normal:
     # brew tap homebrew/cask-fonts &&
     # brew install --cask font-hack-nerd-font
+    # or
+    # sudo pacman -S ttf-hack-nerd
     # source: https://www.nerdfonts.com/font-downloads
     family: hack nerd font
 

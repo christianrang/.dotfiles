@@ -30,7 +30,9 @@ done
 
 set -- "${POSITIONAL_ARGS[@]}" # restore positional parameters
 
-DEVPATHS="/home/crang/progdev/github.com/christianrang /home/crang/progdev/gitlab.rang-corp.com/crang /home/crang/Documents/projects/"
+if [[ -z $DEVPATHS ]]; then
+  DEVPATHS="/home/crang/progdev/github.com/christianrang /home/crang/progdev/gitlab.rang-corp.com/crang /home/crang/Documents/projects/"
+fi
 
 # Is tmux running and are we inside a tmux session
 is_running=$(ps aux | grep '[t]mux new-session')

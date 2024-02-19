@@ -95,16 +95,6 @@ return require('packer').startup(function(use)
     end
   })
 
-  -- use {'ray-x/go.nvim',
-  -- requires = {
-  --     {'ray-x/guihua.lua'},
-  --     {'neovim/nvim-lspconfig'},
-  --     {'mfussenegger/nvim-dap'},
-  --     {'rcarriga/nvim-dap-ui'},
-  --     {'theHamsta/nvim-dap-virtual-text'}
-  --   },
-  -- }
-
   use('RishabhRD/popfix')
   use('RishabhRD/nvim-cheat.sh')
 
