@@ -9,7 +9,8 @@ set $mod Mod1
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 default_border pixel 1
-default_floating_border pixel 1 # removes title bar on window
+# removes title bar on window
+default_floating_border pixel 1 
 
 # Hide borders
 hide_edge_borders none
