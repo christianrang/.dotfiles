@@ -35,7 +35,6 @@ return require('packer').startup(function(use)
   use('scrooloose/nerdtree')
   use('nvim-tree/nvim-web-devicons')
   use('ThePrimeagen/vim-be-good')
-  use('ThePrimeagen/git-worktree.nvim')
   use('lewis6991/gitsigns.nvim')
   use({ 'prettier/vim-prettier', run = 'yarn install --frozen-lockfile --production' })
 
@@ -106,4 +105,7 @@ return require('packer').startup(function(use)
   use('github/copilot.vim')
 
   use('tpope/vim-surround')
+
+  use('tyru/open-browser.vim')
+  use('tyru/open-browser-github.vim')
 end)
