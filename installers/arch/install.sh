@@ -22,7 +22,9 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
 #        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 mkdir -p ~/.local/share/nvim/site/pack/packer/start
-git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+# NOTE: packer.nvim should be installed by the nvim --headless command but if it is not then uncomment the following line
+# git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+nvim --headless ~/.config/nvim/lua/personal/packer.lua +source -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
 # install gopls
 go install golang.org/x/tools/gopls@latest
