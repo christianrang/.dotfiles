@@ -3,23 +3,30 @@
 alias open=xdg-open
 alias xclip="xclip -sel clip"
 
-source ~/.secretrc
+if [ -f ~/.secretrc ]; then
+  source ~/.secretrc
+fi
 
 function airpodsctl {
   SUBCOMMAND=$1
+  
+  if [ -z "$AIRPODS_ADDRESS" ]; then
+    echo "AIRPODS_ADDRESS is not set"
+    return
+  fi
 
- case "$SUBCOMMAND" in
- "connect" | "c")
-    bluetoothctl connect $AIRPODS_ADDRESS
-     ;;
- "disconnect" | "d")
-    bluetoothctl disconnect $AIRPODS_ADDRESS
-     ;;
- *)
-   echo "airpodsctl [SUBCOMMAND]
-    connect     connects airpods
-    disconnect  disconnects airpods"
-     ;;
- esac
+  case "$SUBCOMMAND" in
+    "connect" | "c")
+      bluetoothctl connect $AIRPODS_ADDRESS
+      ;;
+    "disconnect" | "d")
+      bluetoothctl disconnect $AIRPODS_ADDRESS
+      ;;
+    *)
+      echo "airpodsctl [SUBCOMMAND]
+      connect     connects airpods
+      disconnect  disconnects airpods"
+      ;;
+   esac
 
 }
