@@ -1,12 +1,16 @@
 vim.opt.nu = true
 vim.opt.conceallevel = 0
 
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
 vim.opt.mouse = nil
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
+
+vim.opt.scrolloff = 9999
 
 vim.opt.smartindent = true
 
@@ -32,4 +36,3 @@ vim.opt.undofile = true
 vim.cmd('colorscheme catppuccin')
 
 vim.cmd('imap <silent><script><expr> <C-J> copilot#Accept("<CR>")')
-
