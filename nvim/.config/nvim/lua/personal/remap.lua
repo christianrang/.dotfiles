@@ -63,7 +63,6 @@ local npm_commands = function(opts)
         actions.close(prompt_bufnr)
         local selection = action_state.get_selected_entry()
         local command = "tmux splitw -hl 80 '" .. selection[1] .. "; sleep infinity'"
-        vim.api.nvim_put({ command }, "", false, true)
         vim.cmd("silent !"..command)
       end)
       return true
