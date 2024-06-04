@@ -30,9 +30,7 @@ done
 
 set -- "${POSITIONAL_ARGS[@]}" # restore positional parameters
 
-if [[ -z $DEVPATHS ]]; then
-  DEVPATHS="/home/crang/progdev/github.com/christianrang /home/crang/progdev/gitlab.rang-corp.com/crang /home/crang/Documents/projects/"
-fi
+DEVPATHS="/home/crang/progdev/github.com/ /home/crang/progdev/bitbucket.org/ /home/crang/progdev/codeburg.org/"
 
 # Is tmux running and are we inside a tmux session
 is_running=$(ps aux | grep '[t]mux new-session')
@@ -51,7 +49,7 @@ dir2name(){
 
 find_directories(){
     # Responsible for chosing which directories to display
-    find  $DEVPATHS -mindepth 1 -maxdepth 1 -type d -not -path '*/.*';
+    find  $DEVPATHS -mindepth 1 -mindepth 2 -maxdepth 2 -type d -not -path '*/.*/.*';
 }
 
 tabulate() {
