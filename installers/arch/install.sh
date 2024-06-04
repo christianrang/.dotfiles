@@ -47,3 +47,14 @@ chmod +x ~/.local/bin/rust-analyzer
 # install rls
 rustup update
 rustup component add rls rust-analysis rust-src
+
+# Install Catpuccin GTK 3 theme
+# https://github.com/catppuccin/gtk
+yay -S catppuccin-gtk-theme-mocha catppuccin-gtk-theme-macchiato catppuccin-gtk-theme-frappe catppuccin-gtk-theme-latte
+
+# Install Catpuccin icon theme
+# https://github.com/catppuccin/papirus-folders
+git clone https://github.com/catppuccin/papirus-folders.git
+cd papirus-folders
+sudo cp -r src/* /usr/share/icons/Papirus
+./papirus-folders -C cat-mocha-blue --theme Papirus-Dark
