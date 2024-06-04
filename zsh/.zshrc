@@ -8,6 +8,7 @@ fi
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/.bin:/usr/local/bin:/usr/local/mongodb/bin:$PATH
 export PATH=$HOME/.asdf/installs/rust/1.74.0/bin:$PATH
+export PATH=$HOME/.usr/local/bin:$PATH
 
 set -o vi
 
@@ -52,10 +53,6 @@ alias tw='tmux neww -c "#{pane_current_path}"'
 
 alias glow="glow -p"
 
-# Tmux stuffs
-# Start Tmux automatically
-if [ "$TMUX" = "" ]; then tmux attach; fi
-
 export PROGDEV="$HOME/progdev"
 export GITHUBPATH="$PROGDEV/github.com"
 export CRGHPATH="$GITHUBPATH/christianrang"
@@ -80,11 +77,11 @@ if [ ! -d $CRGHPATH ]; then mkdir -p $CRGHPATH; fi
 if [ ! -d $NOTES ]; then mkdir -p $NOTES; fi
 
 if [ ! -d ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions ]; then 
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    git clone --quiet https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 fi
 
 if [ ! -d ~/.asdf ]; then 
-    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
+    git clone --quiet https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
 fi
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
