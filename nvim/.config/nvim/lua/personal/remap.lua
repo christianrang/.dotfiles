@@ -23,6 +23,8 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 vim.keymap.set('n', '<leader>g', ':OpenGithubFile<CR>')
 
+vim.keymap.set('n', '<leader>o', ':Oil<CR>')
+
 vim.keymap.set("n", "<leader>j", ":cnext<CR>")
 vim.keymap.set("n", "<leader>k", ":cprev<CR>")
 vim.keymap.set("n", "<leader>l", ":cope<CR>")

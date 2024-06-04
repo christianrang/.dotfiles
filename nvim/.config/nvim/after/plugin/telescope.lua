@@ -5,7 +5,7 @@ vim.keymap.set("n", "<leader>fa", ":lua require('telescope').extensions.live_gre
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', 'z=', builtin.spell_suggest, {})
 vim.keymap.set('n', '<leader>ht', builtin.help_tags, {})
-vim.keymap.set('n', '<leader>km', builtin.keymaps, {})
+vim.keymap.set('n', '<leader>skm', builtin.keymaps, {})
 vim.keymap.set('n', '<leader>qf', builtin.quickfix, {})
 
 require("telescope").load_extension('harpoon')
