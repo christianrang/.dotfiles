@@ -7,17 +7,17 @@ local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 
 cmp.setup({
-  window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
-  },
-  mapping = cmp.mapping.preset.insert({
-  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-  ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-  ['<CR>'] = cmp.mapping.confirm({ select = true }),
-  ["<C-Space>"] = cmp.mapping.complete(),
-  })
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert({
+        ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+        ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        ["<C-Space>"] = cmp.mapping.complete(),
+    })
 })
 
 lsp.set_preferences({
@@ -31,20 +31,24 @@ lsp.set_preferences({
 })
 
 lsp.on_attach(function(_, bufnr)
-  local opts = {buffer = bufnr, remap = false}
+    -- see :help lsp-zero-keybindings
+    -- to learn the available actions
+    lsp.default_keymaps({ buffer = bufnr })
+    local opts = { buffer = bufnr, remap = false }
 
-  vim.keymap.set("n", 'gi', builtin.lsp_implementations, opts)
-  vim.keymap.set("n", "gd", builtin.lsp_definitions, opts)
-  vim.keymap.set("n", 'gr', builtin.lsp_references, opts)
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-  vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
-  vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
-  vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
-  vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts)
-  vim.keymap.set("n", "dl", builtin.diagnostics, opts)
-  vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
-  vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-  vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
+    vim.keymap.set("n", 'gi', builtin.lsp_implementations, opts)
+    vim.keymap.set("n", "gd", builtin.lsp_definitions, opts)
+    vim.keymap.set("n", "gD", builtin.lsp_type_definitions, opts)
+    vim.keymap.set("n", 'gr', builtin.lsp_references, opts)
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+    vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
+    vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
+    vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
+    vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts)
+    vim.keymap.set("n", "dl", builtin.diagnostics, opts)
+    vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
+    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+    vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 end)
 
 lsp.setup()
@@ -57,57 +61,44 @@ local lspconfig = require 'lspconfig'
 local configs = require 'lspconfig/configs'
 
 if not configs.golangcilsp then
-  configs.golangcilsp = {
-    default_config = {
-      cmd = {'golangci-lint-langserver'},
-      root_dir = lspconfig.util.root_pattern('.git', 'go.mod'),
-      init_options = {
-        command = { "golangci-lint", "run", "--enable-all", "--disable", "lll", "--out-format", "json", "--issues-exit-code=1" };
-      }
-    };
-  }
+    configs.golangcilsp = {
+        default_config = {
+            cmd = { 'golangci-lint-langserver' },
+            root_dir = lspconfig.util.root_pattern('.git', 'go.mod'),
+            init_options = {
+                command = { "golangci-lint", "run", "--enable-all", "--disable", "lll", "--out-format", "json", "--issues-exit-code=1" },
+            }
+        },
+    }
 end
 lspconfig.golangci_lint_ls.setup {
-  filetypes = {'go','gomod'}
+    filetypes = { 'go', 'gomod' }
 }
+
+lspconfig.lua_ls.setup({
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim' }
+            }
+        }
+    }
+})
 
 vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<CR>", { silent = true })
 
-
-local lsp_zero = require('lsp-zero')
-
-lsp_zero.on_attach(function(client, bufnr)
-  -- see :help lsp-zero-keybindings
-  -- to learn the available actions
-  lsp_zero.default_keymaps({buffer = bufnr})
-  local opts = {buffer = bufnr, remap = false}
-
-  vim.keymap.set("n", 'gi', builtin.lsp_implementations, opts)
-  vim.keymap.set("n", "gd", builtin.lsp_definitions, opts)
-  vim.keymap.set("n", 'gr', builtin.lsp_references, opts)
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-  vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
-  vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
-  vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
-  vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts)
-  vim.keymap.set("n", "dl", builtin.diagnostics, opts)
-  vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
-  vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-  vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-end)
-
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {
-    'tsserver',
-    'eslint',
-    'rust_analyzer',
-    'gopls',
-    'pyright',
-    'html',
-  },
-  handlers = {
-    lsp_zero.default_setup,
-  }
+    ensure_installed = {
+        'tsserver',
+        'eslint',
+        'rust_analyzer',
+        'gopls',
+        'pyright',
+        'html',
+        'lua_ls'
+    },
+    handlers = {
+        lsp.default_setup,
+    }
 })
-

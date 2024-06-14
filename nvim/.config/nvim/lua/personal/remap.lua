@@ -29,6 +29,8 @@ vim.keymap.set("n", "<leader>j", ":cnext<CR>")
 vim.keymap.set("n", "<leader>k", ":cprev<CR>")
 vim.keymap.set("n", "<leader>l", ":cope<CR>")
 
+vim.keymap.set("n", "-", ":Oil<CR>")
+
 local pickers = require "telescope.pickers"
 local finders = require "telescope.finders"
 local conf = require("telescope.config").values
@@ -64,7 +66,7 @@ local npm_commands = function(opts)
       actions.select_default:replace(function()
         actions.close(prompt_bufnr)
         local selection = action_state.get_selected_entry()
-        local command = "tmux splitw -hl 80 '" .. selection[1] .. "; sleep infinity'"
+        local command = "tmux splitw -hl 80 '" .. selection[1] .. "; tail -f /dev/null'"
         vim.cmd("silent !"..command)
       end)
       return true
