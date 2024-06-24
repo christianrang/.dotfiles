@@ -28,6 +28,7 @@ vim.keymap.set('n', '<leader>o', ':Oil<CR>')
 vim.keymap.set("n", "<leader>j", ":cnext<CR>")
 vim.keymap.set("n", "<leader>k", ":cprev<CR>")
 vim.keymap.set("n", "<leader>l", ":cope<CR>")
+vim.keymap.set("n", "<leader>nd", ":lua require('personal.hack.notes').daily_note()<CR>")
 
 vim.keymap.set("n", "-", ":Oil<CR>")
 
