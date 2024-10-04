@@ -38,15 +38,12 @@ return require('packer').startup(function(use)
     use('nvim-treesitter/nvim-treesitter-context')
     use('towolf/vim-helm')
 
-    use({ 'fatih/vim-go', run = ':GoUpdateBinaries' })
-
     use('theprimeagen/harpoon')
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
     use('numToStr/Comment.nvim')
     use('scrooloose/nerdtree')
     use('nvim-tree/nvim-web-devicons')
-    use('ThePrimeagen/vim-be-good')
     use('lewis6991/gitsigns.nvim')
     use({ 'prettier/vim-prettier', run = 'yarn install --frozen-lockfile --production' })
 
@@ -77,8 +74,6 @@ return require('packer').startup(function(use)
     use("folke/zen-mode.nvim")
 
     -- Colorschemes
-    use('morhetz/gruvbox')
-    use('junegunn/seoul256.vim')
     use('haxibami/urara.vim')
     use('folke/tokyonight.nvim')
     use { "catppuccin/nvim", as = "catppuccin" }
@@ -96,23 +91,10 @@ return require('packer').startup(function(use)
             opt = true },
     }
 
-    -- use({
-    --   "rcarriga/nvim-dap-ui",
-    --   requires = { "mfussenegger/nvim-dap" },
-    --   config = function()
-    --     require("dapui").setup()
-    --   end
-    -- })
-
     use('RishabhRD/popfix')
     use('RishabhRD/nvim-cheat.sh')
 
     use("ellisonleao/glow.nvim")
-
-    use({ 'michaelb/sniprun', run = 'bash ./install.sh' })
-    use('rcarriga/nvim-notify')
-
-    use('github/copilot.vim')
 
     use('tpope/vim-surround')
 
@@ -122,6 +104,8 @@ return require('packer').startup(function(use)
     use('stevearc/oil.nvim')
 
     use("christoomey/vim-tmux-navigator")
+
+    use ("sindrets/diffview.nvim")
 
     if packer_bootstrap then
         require('packer').sync()

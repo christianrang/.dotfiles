@@ -7,12 +7,10 @@ vim.keymap.set('n', 'z=', builtin.spell_suggest, {})
 vim.keymap.set('n', '<leader>ht', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>skm', builtin.keymaps, {})
 vim.keymap.set('n', '<leader>qf', builtin.quickfix, {})
-vim.keymap.set('n', '<leader>nh', require('telescope').extensions.notify.notify, {})
 
 require("telescope").load_extension('harpoon')
 require("telescope").load_extension('aerial')
 require("telescope").load_extension("live_grep_args")
-require("telescope").load_extension("notify")
 
 local telescope = require("telescope")
 local telescopeConfig = require("telescope.config")
