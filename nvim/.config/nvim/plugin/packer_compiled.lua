@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/Users/christianrang/.cache/nvim/packer_hererocks/2.1.1710088188/share/lua/5.1/?.lua;/Users/christianrang/.cache/nvim/packer_hererocks/2.1.1710088188/share/lua/5.1/?/init.lua;/Users/christianrang/.cache/nvim/packer_hererocks/2.1.1710088188/lib/luarocks/rocks-5.1/?.lua;/Users/christianrang/.cache/nvim/packer_hererocks/2.1.1710088188/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/Users/christianrang/.cache/nvim/packer_hererocks/2.1.1710088188/lib/lua/5.1/?.so"
+local package_path_str = "/Users/christianrang/.cache/nvim/packer_hererocks/2.1.1727870382/share/lua/5.1/?.lua;/Users/christianrang/.cache/nvim/packer_hererocks/2.1.1727870382/share/lua/5.1/?/init.lua;/Users/christianrang/.cache/nvim/packer_hererocks/2.1.1727870382/lib/luarocks/rocks-5.1/?.lua;/Users/christianrang/.cache/nvim/packer_hererocks/2.1.1727870382/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/christianrang/.cache/nvim/packer_hererocks/2.1.1727870382/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -119,10 +119,10 @@ _G.packer_plugins = {
     path = "/Users/christianrang/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
-  ["copilot.vim"] = {
+  ["diffview.nvim"] = {
     loaded = true,
-    path = "/Users/christianrang/.local/share/nvim/site/pack/packer/start/copilot.vim",
-    url = "https://github.com/github/copilot.vim"
+    path = "/Users/christianrang/.local/share/nvim/site/pack/packer/start/diffview.nvim",
+    url = "https://github.com/sindrets/diffview.nvim"
   },
   ["friendly-snippets"] = {
     loaded = true,
@@ -139,20 +139,10 @@ _G.packer_plugins = {
     path = "/Users/christianrang/.local/share/nvim/site/pack/packer/start/glow.nvim",
     url = "https://github.com/ellisonleao/glow.nvim"
   },
-  gruvbox = {
-    loaded = true,
-    path = "/Users/christianrang/.local/share/nvim/site/pack/packer/start/gruvbox",
-    url = "https://github.com/morhetz/gruvbox"
-  },
   harpoon = {
     loaded = true,
     path = "/Users/christianrang/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/theprimeagen/harpoon"
-  },
-  indentLine = {
-    loaded = true,
-    path = "/Users/christianrang/.local/share/nvim/site/pack/packer/start/indentLine",
-    url = "https://github.com/Yggdroot/indentLine"
   },
   ["lsp-zero.nvim"] = {
     loaded = true,
@@ -200,11 +190,6 @@ _G.packer_plugins = {
     path = "/Users/christianrang/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
-  ["nvim-notify"] = {
-    loaded = true,
-    path = "/Users/christianrang/.local/share/nvim/site/pack/packer/start/nvim-notify",
-    url = "https://github.com/rcarriga/nvim-notify"
-  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/Users/christianrang/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
@@ -219,6 +204,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/christianrang/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/nvim-tree/nvim-web-devicons"
+  },
+  ["oil.nvim"] = {
+    loaded = true,
+    path = "/Users/christianrang/.local/share/nvim/site/pack/packer/start/oil.nvim",
+    url = "https://github.com/stevearc/oil.nvim"
   },
   ["open-browser-github.vim"] = {
     loaded = true,
@@ -250,16 +240,6 @@ _G.packer_plugins = {
     path = "/Users/christianrang/.local/share/nvim/site/pack/packer/start/popfix",
     url = "https://github.com/RishabhRD/popfix"
   },
-  ["seoul256.vim"] = {
-    loaded = true,
-    path = "/Users/christianrang/.local/share/nvim/site/pack/packer/start/seoul256.vim",
-    url = "https://github.com/junegunn/seoul256.vim"
-  },
-  sniprun = {
-    loaded = true,
-    path = "/Users/christianrang/.local/share/nvim/site/pack/packer/start/sniprun",
-    url = "https://github.com/michaelb/sniprun"
-  },
   ["telescope-live-grep-args.nvim"] = {
     loaded = true,
     path = "/Users/christianrang/.local/share/nvim/site/pack/packer/start/telescope-live-grep-args.nvim",
@@ -285,11 +265,6 @@ _G.packer_plugins = {
     path = "/Users/christianrang/.local/share/nvim/site/pack/packer/start/urara.vim",
     url = "https://github.com/haxibami/urara.vim"
   },
-  ["vim-be-good"] = {
-    loaded = true,
-    path = "/Users/christianrang/.local/share/nvim/site/pack/packer/start/vim-be-good",
-    url = "https://github.com/ThePrimeagen/vim-be-good"
-  },
   ["vim-closetag"] = {
     loaded = true,
     path = "/Users/christianrang/.local/share/nvim/site/pack/packer/start/vim-closetag",
@@ -299,11 +274,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/christianrang/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
-  },
-  ["vim-go"] = {
-    loaded = true,
-    path = "/Users/christianrang/.local/share/nvim/site/pack/packer/start/vim-go",
-    url = "https://github.com/fatih/vim-go"
   },
   ["vim-helm"] = {
     loaded = true,
@@ -319,6 +289,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/christianrang/.local/share/nvim/site/pack/packer/start/vim-surround",
     url = "https://github.com/tpope/vim-surround"
+  },
+  ["vim-tmux-navigator"] = {
+    loaded = true,
+    path = "/Users/christianrang/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
+    url = "https://github.com/christoomey/vim-tmux-navigator"
   },
   ["zen-mode.nvim"] = {
     loaded = true,

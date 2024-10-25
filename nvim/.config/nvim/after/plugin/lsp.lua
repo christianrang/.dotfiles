@@ -90,7 +90,7 @@ vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<CR>", { silent = true })
 require('mason').setup({})
 require('mason-lspconfig').setup({
     ensure_installed = {
-        'tsserver',
+        -- 'tsserver', -- woah Cameron fixed this wtf?? this isn't "tsserver" what is it actually
         'eslint',
         'rust_analyzer',
         'gopls',

@@ -47,8 +47,6 @@ return require('packer').startup(function(use)
     use('lewis6991/gitsigns.nvim')
     use({ 'prettier/vim-prettier', run = 'yarn install --frozen-lockfile --production' })
 
-    use('alvan/vim-closetag')
-
     use {
         'VonHeikemen/lsp-zero.nvim',
         requires = {
@@ -74,7 +72,6 @@ return require('packer').startup(function(use)
     use("folke/zen-mode.nvim")
 
     -- Colorschemes
-    use('haxibami/urara.vim')
     use('folke/tokyonight.nvim')
     use { "catppuccin/nvim", as = "catppuccin" }
 
