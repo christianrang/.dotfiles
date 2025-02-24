@@ -71,7 +71,6 @@ return require('packer').startup(function(use)
 
     use("folke/zen-mode.nvim")
 
-    -- Colorschemes
     use('folke/tokyonight.nvim')
     use { "catppuccin/nvim", as = "catppuccin" }
 
