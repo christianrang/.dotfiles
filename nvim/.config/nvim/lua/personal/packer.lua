@@ -99,7 +99,7 @@ return require('packer').startup(function(use)
 
     use('stevearc/oil.nvim')
 
-    use("christoomey/vim-tmux-navigator")
+    -- use("christoomey/vim-tmux-navigator")
 
     use ("sindrets/diffview.nvim")
 
