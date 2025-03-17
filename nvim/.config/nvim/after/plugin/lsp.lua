@@ -3,21 +3,13 @@ local builtin = require("telescope.builtin")
 
 lsp.preset("recommended")
 
-local cmp = require('cmp')
-local cmp_action = require('lsp-zero').cmp_action()
+vim.g.coq_settings = {
+    auto_start = true,
+}
 
-cmp.setup({
-    window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
-    },
-    mapping = cmp.mapping.preset.insert({
-        ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-        ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
-        ["<C-Space>"] = cmp.mapping.complete(),
-    })
+local coq_settings = require('coq').lsp_ensure_capabilities()
+lsp.set_server_config({
+  capabilities = coq_settings.capabilities,
 })
 
 lsp.set_preferences({
@@ -90,11 +82,9 @@ vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<CR>", { silent = true })
 require('mason').setup({})
 require('mason-lspconfig').setup({
     ensure_installed = {
-        -- 'tsserver', -- woah Cameron fixed this wtf?? this isn't "tsserver" what is it actually
         'eslint',
         'rust_analyzer',
         'gopls',
-        'pyright',
         'html',
         'lua_ls'
     },

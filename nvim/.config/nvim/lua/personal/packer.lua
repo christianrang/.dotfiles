@@ -56,12 +56,6 @@ return require('packer').startup(function(use)
             { 'williamboman/mason-lspconfig.nvim' },
 
             -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },
-            { 'hrsh7th/cmp-buffer' },
-            { 'hrsh7th/cmp-path' },
-            { 'saadparwaiz1/cmp_luasnip' },
-            { 'hrsh7th/cmp-nvim-lsp' },
-            { 'hrsh7th/cmp-nvim-lua' },
 
             -- Snippets
             { 'L3MON4D3/LuaSnip' },
@@ -84,7 +78,7 @@ return require('packer').startup(function(use)
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons',
-            opt = true },
+        opt = true },
     }
 
     use('RishabhRD/popfix')
@@ -102,6 +96,39 @@ return require('packer').startup(function(use)
     -- use("christoomey/vim-tmux-navigator")
 
     use ("sindrets/diffview.nvim")
+
+    use ("tpope/vim-dadbod")
+    use ("kristijanhusak/vim-dadbod-ui")
+
+    use {
+        'ms-jpq/coq_nvim',
+        branch = 'coq',
+        config = function()
+            vim.g.coq_settings = {
+                auto_start = true
+            }
+        end
+    }
+
+    use {
+        'ms-jpq/coq.artifacts',
+        branch = 'artifacts',
+        config = function()
+            vim.g.coq_settings = {
+                auto_start = true
+            }
+        end
+    }
+
+    use {
+        'ms-jpq/coq.thirdparty',
+        branch = '3p',
+        config = function()
+            vim.g.coq_settings = {
+                auto_start = true
+            }
+        end
+    }
 
     if packer_bootstrap then
         require('packer').sync()
