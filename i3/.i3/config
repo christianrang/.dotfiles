@@ -53,11 +53,21 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 #exec --no-startup-id pa-applet
 #bindsym $mod+Ctrl+m exec pavucontrol
 
+bindsym XF86AudioRaiseVolume exec "amixer -D sysdefault:CARD=Wave3 sset PCM 5+ unmute"
+bindsym XF86AudioLowerVolume exec "amixer -D sysdefault:CARD=Wave3 sset PCM 5- unmute"
+bindsym XF86AudioMute exec "amixer -D sysdefault:CARD=Wave3 sset PCM toggle"
+bindsym XF86AudioNext exec "playerctl next"
+bindsym XF86AudioPrev exec "playerctl previous"
+bindsym XF86AudioPause exec "playerctl play-pause"
+
 ################################################################################################
 
 # Screen brightness controls
 # bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+
+# Switch HDMI to laptop
+bindsym $mod+o exec terminal -e '/home/crang/.usr/local/bin/hdmi-switch switch -i work -o pc'
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
@@ -158,14 +168,14 @@ set $ws6 6
 set $ws7 7
 set $ws8 8
 
-workspace $ws1 output eDP-1
-workspace $ws2 output eDP-1
-workspace $ws3 output eDP-1
-workspace $ws4 output eDP-1
-workspace $ws5 output HDMI-1-0 eDP-1
-workspace $ws6 output HDMI-1-0 eDP-1
-workspace $ws7 output HDMI-1-0 eDP-1
-workspace $ws8 output HDMI-1-0 eDP-1
+workspace $ws1 output DP-2
+workspace $ws2 output DP-2
+workspace $ws3 output DP-2
+workspace $ws4 output DP-2
+workspace $ws5 output HDMI-1 DP-2
+workspace $ws6 output HDMI-1 DP-2
+workspace $ws7 output HDMI-1 DP-2
+workspace $ws8 output HDMI-1 DP-2
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -295,7 +305,7 @@ mode "resize" {
 # Lock screen
 bindsym $mod+9 exec --no-startup-id blurlock
 
-bindsym $mod+shift+a exec "brave --new-window https://algoexpert.io/questions"
+bindsym $mod+shift+a exec "brave --new-window https://neetcode.io/roadmap"
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -378,7 +388,7 @@ exec --no-startup-id ~/.config/polybar/launch.sh --colorblocks
 # }
 
 # hide/unhide i3status bar
-bindsym $mod+m bar mode toggle
+bindsym $mod+m exec "polybar-msg cmd toggle"
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
