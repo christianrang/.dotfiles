@@ -3,7 +3,7 @@
 # copied from https://github.com/ThePrimeagen
 
 if [[ -z $DEVPATHS ]]; then
-    DEVPATHS="/home/crang/progdev/github.com/christianrang /home/crang/progdev/gitlab.rang-corp.com/crang"
+    DEVPATHS="/Users/Users/christianrang/progdev/github.com/christianrang /Users/christianrang/progdev/gitlab.rang-corp.com/crang /Users/christianrang/progdev/github.com/FishtechCSOC"
 fi
 
 if [[ $# -eq 1 ]]; then

@@ -33,7 +33,7 @@ telescope.setup({
 		vimgrep_arguments = vimgrep_arguments,
         file_ignore_patterns = {
             "node_modules",
-            "vendor",
+            -- "vendor",
             "venv",
         },
         mappings = {
@@ -45,7 +45,8 @@ telescope.setup({
 	pickers = {
 		find_files = {
 			-- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
-			find_command = { "rg", "--files", "--hidden", "--glob", "!**vendor/*", "--no-ignore" },
+			-- find_command = { "rg", "--files", "--hidden", "--glob", "!**vendor/*", "--no-ignore" },
+			find_command = { "rg", "--files", "--hidden", "--no-ignore" },
 		},
 	},
 })
